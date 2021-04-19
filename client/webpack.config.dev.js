@@ -33,13 +33,14 @@ module.exports = (env, dev) => ({
     alias: {
       'components': path.resolve(process.cwd(), './src/components'),
       'blocks': path.resolve(process.cwd(), './src/blocks'),
+      'services': path.resolve(process.cwd(), './src/services')
     }
   },
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify('development'),
-        'REACT_APP_API': JSON.stringify('http://localhost:5000')
+        'REACT_APP_API': JSON.stringify('http://192.168.1.197:5000')
       }
     }),
     new CleanWebpackPlugin(),

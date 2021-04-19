@@ -1,26 +1,28 @@
 import React, { useState, useEffect } from "react";
-import socketIOClient from "socket.io-client";
 import Chat from 'blocks/chat/chat.jsx'
-const ENDPOINT = process.env.REACT_APP_API
+import RegisterWithName from 'blocks/register/register.jsx'
+import {initSocket, closeSocket, socketSend} from './services/socket'
+
 
 function App() {
-  const [response, setResponse] = useState("");
-  console.log(process.env.NODE_ENV, ENDPOINT)
+  const [response, setResponse] = useState("")
+  const [chatMsg, setChatMsg] = useState("")
+  const [userName, setUserName] = useState("")
 
   useEffect(() => {
-    const socket = socketIOClient(ENDPOINT);
-    socket.on("FromAPI", data => {
-      setResponse(data);
-    });
-    return () => socket.close()
-  }, []);
+    initSocket()
+    return () => closeSocket()
+  }, [])
+
+  const handleSendMessage = (str) => {
+    socketSend("chat-message", str)
+  }
 
   return (
     <>
-      <p>
-        It's <time dateTime={response}>{response}</time>
-      </p>
-      <Chat />
+      {(userName || userName !== "") ? <Chat handleSendMessage={handleSendMessage}/> 
+      : 
+      <RegisterWithName/>}
     </>
   );
 }

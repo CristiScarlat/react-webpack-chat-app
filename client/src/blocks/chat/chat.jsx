@@ -3,12 +3,13 @@ import ChatboxContainer from 'components/chatboxContainer/chatboxContainer.jsx'
 import MessagesContainer from 'components/messagesContainer/messagesContainer.jsx'
 import InputWithButton from 'components/inputWithButton/inputWithButton.jsx'
 
-const Chat = () => {
+const Chat = ({handleSendMessage}) => {
+
     return (
         <>
          <ChatboxContainer>
             <MessagesContainer />
-            <InputWithButton />
+            <InputWithButton handleSendMessage={handleSendMessage}/>
          </ChatboxContainer>
         </>
     )

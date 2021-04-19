@@ -1,6 +1,7 @@
 const express = require("express");
 const http = require("http");
 const socketIo = require("socket.io");
+const {setUser, getUsers} = require("./db/jsonDB")
 
 const port = process.env.PORT || 5000;
 const index = require("./routes/index");
@@ -29,15 +30,26 @@ io.on("connection", (socket) => {
   if (interval) {
     clearInterval(interval);
   }
-  interval = setInterval(() => getApiAndEmit(socket, socket.id), 1000);// just for test the socket io communication
+  //interval = setInterval(() => getApiAndEmit(socket, socket.id), 1000);// just for test the socket io communication
+  socket.on("user", (data) => {
+    const res = JSON.parse(data)
+    res.id = socket.id
+    console.log(res)
+    setUser(res)
+  })
+
+  socket.on("chat-message", (data) => {
+    console.log(data)
+  })
+
   socket.on("disconnect", () => {
     console.log("Client disconnected");
-    clearInterval(interval);
+    //clearInterval(interval);
   });
 
-  socket.message('from-client', (m) => {
-    console.log(m)
-  })
+  // socket.message('from-client', (m) => {
+  //   console.log(m)
+  // })
 });
 
 server.listen(port, () => console.log(`Listening on port ${port}`));
