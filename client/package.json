@@ -1,0 +1,41 @@
+{
+  "name": "react_webpack_starter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server --config=webpack.config.dev.js --open --hot",
+    "prod": "webpack-dev-server --config=webpack.config.prod.js --open --hot",
+    "build": "webpack --config=webpack.config.prod.js",
+    "webpack-create-stats": "webpack --json > stats.json",
+    "webpack-analyser": "webpack-bundle-analyzer stats.json"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "css-loader": "^5.2.2",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "socket.io-client": "^4.0.1",
+    "style-loader": "^2.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0-beta.33",
+    "@babel/plugin-transform-runtime": "^7.0.0-beta.33",
+    "@babel/preset-env": "^7.13.15",
+    "@babel/preset-react": "^7.0.0-beta.33",
+    "@babel/register": "^7.0.0-beta.33",
+    "@babel/runtime": "^7.0.0-beta.33",
+    "babel-eslint": "^8.0.3",
+    "babel-loader": "^8.0.0-beta.0",
+    "babel-plugin-root-import": "^5.1.0",
+    "babel-preset-react-optimize": "^1.0.1",
+    "clean-webpack-plugin": "^4.0.0-alpha.0",
+    "dotenv-webpack": "^7.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.20.2",
+    "webpack-bundle-analyzer": "^4.4.1",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.9"
+  }
+}
