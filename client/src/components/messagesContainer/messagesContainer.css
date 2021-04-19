@@ -1,21 +1,22 @@
 .chat-window {
     flex: auto;
     max-height: calc(100% - 60px);
-    background: #2f323b;
+    background: #e6e6e6;
     overflow: auto;
+    padding: 1rem;
 }
 .msg-container {
     position: relative;
     display: inline-block;
     width: 100%;
-    margin: 0 0 10px 0;
+    margin: 0 0 1rem 0;
     padding: 0;
 }
 .msg-box {
     display: flex;
-    background: #5b5e6c;
-    padding: 10px 10px 0 10px;
-    border-radius: 0 6px 6px 0;
+    background: #3f5d3b;
+    padding: 1rem 1rem 0 1rem;
+    border-radius: 0 20px 20px 0;
     max-width: 80%;
     width: auto;
     float: left;
