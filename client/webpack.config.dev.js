@@ -23,7 +23,6 @@ module.exports = (env, dev) => ({
       },
       {
         exclude: /node_modules/,
-        //include: [path.resolve(__dirname, 'src/blocks'), path.resolve(__dirname, 'src')],
         test: /\.(js|jsx)$/,
         loader: 'babel-loader',
       }
@@ -40,7 +39,7 @@ module.exports = (env, dev) => ({
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify('development'),
-        'REACT_APP_API': JSON.stringify('http://192.168.1.197:5000')
+        'REACT_APP_API': JSON.stringify('http://localhost:5000')
       }
     }),
     new CleanWebpackPlugin(),

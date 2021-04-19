@@ -19,5 +19,3 @@ export function closeSocket() {
 export function socketSend(eventName, msg){
     socket.emit(eventName, msg)
 }
-
-//module.exports = { initSocket, closeSocket, socketSend }
