@@ -4,7 +4,7 @@
   "description": "",
   "main": "webSocketServer.js",
   "scripts": {
-    "start": "node app.js"
+    "dev": "node app.js"
   },
   "keywords": [],
   "author": "",
