@@ -10,7 +10,7 @@ module.exports = (env, dev) => ({
     contentBase: './dist',
     port: 3000
   },
-  entry: './src/index.js',
+  entry: ['@babel/polyfill', './src/index.js'],
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist')
@@ -36,10 +36,11 @@ module.exports = (env, dev) => ({
     }
   },
   plugins: [
+    // new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify('development'),
-        'REACT_APP_API': JSON.stringify('http://localhost:5000')
+        'REACT_APP_API': JSON.stringify('http://192.168.1.197:5000')
       }
     }),
     new CleanWebpackPlugin(),

@@ -20,22 +20,23 @@
     "style-loader": "^2.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0-beta.33",
-    "@babel/plugin-transform-runtime": "^7.0.0-beta.33",
-    "@babel/preset-env": "^7.13.15",
-    "@babel/preset-react": "^7.0.0-beta.33",
-    "@babel/register": "^7.0.0-beta.33",
-    "@babel/runtime": "^7.0.0-beta.33",
-    "babel-eslint": "^8.0.3",
-    "babel-loader": "^8.0.0-beta.0",
-    "babel-plugin-root-import": "^5.1.0",
-    "babel-preset-react-optimize": "^1.0.1",
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/plugin-proposal-export-default-from": "^7.0.0",
+    "@babel/polyfill": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "^9.0.0",
+    "babel-jest": "^23.4.2",
+    "babel-loader": "^7.0.0",
+    "webpack": "^4.16.5",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.5",
+    "webpack-bundle-analyzer": "^4.4.1",
     "clean-webpack-plugin": "^4.0.0-alpha.0",
     "dotenv-webpack": "^7.0.0",
-    "html-webpack-plugin": "^3.2.0",
-    "webpack": "^4.20.2",
-    "webpack-bundle-analyzer": "^4.4.1",
-    "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.9"
+    "html-webpack-plugin": "^3.2.0"   
   }
 }
