@@ -6,9 +6,8 @@ const socket = socketIOClient(ENDPOINT)
 export function initSocket() {
     console.log("...initializing socket io")
     socket.on('connect', function (data) {
-        socket.emit("user", JSON.stringify({name: 'cristian'}))
-      });
-
+        console.log("socket connected")
+    });
 }
 
 export function closeSocket() {
@@ -16,6 +15,12 @@ export function closeSocket() {
     socket.close()
 }
 
-export function socketSend(eventName, msg){
+export function socketSend(eventName, msg) {
     socket.emit(eventName, msg)
+}
+
+export function onMsgReceive(cb) {
+    socket.on("onlineUsers", data => {
+        cb(data)
+    })
 }

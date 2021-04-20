@@ -9,7 +9,7 @@ const Chat = ({handleSendMessage}) => {
         <>
          <ChatboxContainer>
             <MessagesContainer />
-            <InputWithButton handleSendMessage={handleSendMessage}/>
+            <InputWithButton handleButtonOnCLick={handleSendMessage}/>
          </ChatboxContainer>
         </>
     )
