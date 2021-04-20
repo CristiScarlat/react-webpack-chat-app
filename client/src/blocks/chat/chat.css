@@ -1,0 +1,4 @@
+.chat-app-container{
+    display: flex;
+    height: inherit;
+}

@@ -9,6 +9,13 @@ const getUsers = () => {
     return usersList
 }
 
+const getUserName = (id) => {
+    if(!id)return
+    const users = Object.keys(usersList)
+    const userById = users.find(name => usersList[name].id === id)
+    return userById
+}
+
 const deleteUser = (id) => {
     if(!id)return
     const users = Object.keys(usersList)
@@ -16,4 +23,4 @@ const deleteUser = (id) => {
     delete usersList[disconnectedUser]
 }
 
-module.exports = {setUser, getUsers, deleteUser}
+module.exports = {setUser, getUsers, deleteUser, getUserName}

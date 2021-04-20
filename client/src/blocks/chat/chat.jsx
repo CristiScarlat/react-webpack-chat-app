@@ -2,16 +2,19 @@ import React from 'react'
 import ChatboxContainer from 'components/chatboxContainer/chatboxContainer.jsx'
 import MessagesContainer from 'components/messagesContainer/messagesContainer.jsx'
 import InputWithButton from 'components/inputWithButton/inputWithButton.jsx'
+import List from 'components/listContainer/listContainer.jsx'
+import './chat.css'
 
-const Chat = ({handleSendMessage}) => {
+const Chat = ({ handleSendMessage, onlineUsers }) => {
 
     return (
-        <>
-         <ChatboxContainer>
-            <MessagesContainer />
-            <InputWithButton handleButtonOnCLick={handleSendMessage}/>
-         </ChatboxContainer>
-        </>
+        <div className="chat-app-container">
+            <List itemsList={onlineUsers}/>
+            <ChatboxContainer>
+                <MessagesContainer />
+                <InputWithButton handleButtonOnCLick={handleSendMessage} />
+            </ChatboxContainer>
+        </div>
     )
 }
 

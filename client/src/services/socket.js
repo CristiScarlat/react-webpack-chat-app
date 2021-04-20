@@ -19,8 +19,9 @@ export function socketSend(eventName, msg) {
     socket.emit(eventName, msg)
 }
 
-export function onMsgReceive(cb) {
-    socket.on("onlineUsers", data => {
+export function onMsgReceive(eventName, cb) {
+    socket.on(eventName, data => {
+        console.log(">>>>on-message->", eventName)
         cb(data)
     })
 }
