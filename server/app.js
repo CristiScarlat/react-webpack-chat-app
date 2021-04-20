@@ -1,7 +1,7 @@
 const express = require("express");
 const http = require("http");
 const socketIo = require("socket.io");
-const {setUser, getUsers} = require("./db/jsonDB")
+const {setUser, getUsers, deleteUser} = require("./db/jsonDB")
 
 const port = process.env.PORT || 5000;
 const index = require("./routes/index");
@@ -27,9 +27,8 @@ const getApiAndEmit = (socket, id) => {
 
 io.on("connection", (socket) => {
   console.log(`Client with id ${socket.id} is connected`);
-  if (interval) {
-    clearInterval(interval);
-  }
+  const users = getUsers()
+  io.emit("onlineUsers", JSON.stringify(Object.keys(users)));
   //interval = setInterval(() => getApiAndEmit(socket, socket.id), 1000);// just for test the socket io communication
   socket.on("user", (data) => {
     const res = JSON.parse(data)
@@ -44,12 +43,11 @@ io.on("connection", (socket) => {
 
   socket.on("disconnect", () => {
     console.log("Client disconnected");
-    //clearInterval(interval);
+    deleteUser(socket.id)
+    const users = getUsers()
+    io.emit("onlineUsers", JSON.stringify(Object.keys(users)));
   });
 
-  // socket.message('from-client', (m) => {
-  //   console.log(m)
-  // })
 });
 
 server.listen(port, () => console.log(`Listening on port ${port}`));

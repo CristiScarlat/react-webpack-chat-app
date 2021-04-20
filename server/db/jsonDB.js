@@ -9,4 +9,11 @@ const getUsers = () => {
     return usersList
 }
 
-module.exports = {setUser, getUsers}
+const deleteUser = (id) => {
+    if(!id)return
+    const users = Object.keys(usersList)
+    const disconnectedUser = users.filter(name => usersList[name].id === id)
+    delete usersList[disconnectedUser]
+}
+
+module.exports = {setUser, getUsers, deleteUser}
