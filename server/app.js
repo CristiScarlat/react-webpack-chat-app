@@ -38,7 +38,7 @@ io.on("connection", (socket) => {
     if(msgObj.sendTo === 'all'){
       const currentUser = getUserName(socket.id)
       console.log("broadcast message->", `${msgObj.msg}`, currentUser)
-      io.emit("messageEvent", JSON.stringify({user: currentUser, message: msgObj.msg}));
+      socket.broadcast.emit("messageEvent", JSON.stringify({user: currentUser, message: msgObj.msg, timestamp: new Date()}));
     }
   })
 

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --config=webpack.config.dev.js --open --hot",
+    "dev": "webpack-dev-server --config=webpack.config.dev.js --host 0.0.0.0 --open --hot",
     "prod": "webpack-dev-server --config=webpack.config.prod.js --open --hot",
     "build": "webpack --config=webpack.config.prod.js",
     "webpack-create-stats": "webpack --json > stats.json",

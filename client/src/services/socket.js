@@ -21,7 +21,7 @@ export function socketSend(eventName, msg) {
 
 export function onMsgReceive(eventName, cb) {
     socket.on(eventName, data => {
-        console.log(">>>>on-message->", eventName)
+        console.log(">>>>on-message->", eventName, data)
         cb(data)
     })
 }

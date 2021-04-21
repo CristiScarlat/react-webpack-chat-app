@@ -14,11 +14,12 @@
 }
 .msg-box {
     display: flex;
+    flex-direction: column;
     background: #3f5d3b;
     padding: 1rem 1rem 0 1rem;
     border-radius: 0 20px 20px 0;
+    width: 50%;
     max-width: 80%;
-    width: auto;
     float: left;
     box-shadow: 0 0 2px rgba(0,0,0,.12),0 2px 4px rgba(0,0,0,.24);
 }
@@ -70,4 +71,10 @@
 }
 .msg-self .timestamp {
     text-align: right;
+}
+
+.user-title {
+    text-transform: capitalize;
+    font-weight: 600;
+    font-size: 18px;
 }

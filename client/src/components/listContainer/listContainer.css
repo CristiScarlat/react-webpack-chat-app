@@ -1,14 +1,15 @@
-.select-container{
+.list-container{
     padding: 1rem;
     background: #6f60a4;
     min-width: 4rem;
+    max-width: 8rem;
     width: 20%;
     color: whitesmoke;
     font-size: 24px;
     line-height: 2rem;
 }
 
-.select-container ul {
+.list-container ul {
     margin: 0;
     padding: 0;
     display: grid;

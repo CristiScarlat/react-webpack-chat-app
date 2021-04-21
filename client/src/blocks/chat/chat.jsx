@@ -5,13 +5,13 @@ import InputWithButton from 'components/inputWithButton/inputWithButton.jsx'
 import List from 'components/listContainer/listContainer.jsx'
 import './chat.css'
 
-const Chat = ({ handleSendMessage, onlineUsers }) => {
+const Chat = ({ handleSendMessage, onlineUsers, msgList }) => {
 
     return (
         <div className="chat-app-container">
             <List itemsList={onlineUsers}/>
             <ChatboxContainer>
-                <MessagesContainer />
+                <MessagesContainer msgList={msgList}/>
                 <InputWithButton handleButtonOnCLick={handleSendMessage} />
             </ChatboxContainer>
         </div>

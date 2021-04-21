@@ -1,4 +1,5 @@
 .chat-input {
+    position: relative;
     display: flex;
     flex: 0 0 auto;
     height: 4rem;
@@ -43,4 +44,11 @@
     color: rgba(0,0,0,.38);
     font-size: 8pt;
     margin-bottom: 10px;
+}
+
+.input-error {
+    position: absolute;
+    /* top: -1rem; */
+    color: red;
+    margin-left: 1rem;
 }

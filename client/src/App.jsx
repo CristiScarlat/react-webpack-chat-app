@@ -6,7 +6,7 @@ import { initSocket, closeSocket, socketSend, onMsgReceive } from './services/so
 
 function App() {
   const [response, setResponse] = useState("")
-  const [chatMsg, setChatMsg] = useState("")
+  const [chatMsgs, setChatMsgs] = useState([])
   const [userName, setUserName] = useState()
   const [onlineUsers, setOnlineUsers] = useState([])
 
@@ -16,11 +16,10 @@ function App() {
     fetchOnLineUsers()
     initSocket()
     if (userName && userName !== "") {
-      console.log(">>>>>>", userName)
       setUserName(userName)
     }
     onMsgReceive("onlineUsers", handleUpdateOnlineUsers)
-    onMsgReceive("messageEvent", handleReceivedMsg)
+    onMsgReceive("messageEvent", (msg) => handleReceivedMsg(msg))
     return () => closeSocket()
   }, [])
 
@@ -35,12 +34,16 @@ function App() {
   }
 
   const handleReceivedMsg = (msg) => {
-    console.log(msg)
+    setChatMsgs((oldState) => [...oldState, JSON.parse(msg)])
   }
 
   const handleSendMessage = (str) => {
-    const msgObj = { msg: str, sendTo: 'all' }
     console.log("client send message")
+    const timestamp = new Date().toLocaleString()
+    const msgsArr = [...chatMsgs, {user: 'self', message: str, timestamp}]
+    setChatMsgs(msgsArr)
+
+    const msgObj = { msg: str, sendTo: 'all' }
     socketSend("clientMsg", JSON.stringify(msgObj))
   }
 
@@ -52,7 +55,7 @@ function App() {
   return (
     <>
       <h1>Welcome to chat demo</h1>
-      {(userName && userName !== "") ? <Chat handleSendMessage={handleSendMessage} onlineUsers={onlineUsers} />
+      {(userName && userName !== "") ? <Chat handleSendMessage={handleSendMessage} onlineUsers={onlineUsers} msgList={chatMsgs}/>
         :
         <RegisterWithName handleRegisterName={handleRegisterName} />}
     </>

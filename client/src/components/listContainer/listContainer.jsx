@@ -3,7 +3,7 @@ import './listContainer.css'
 
 const List = ({ itemsList = ['cris', 'oana', 'ion'] }) => {
     return (
-        <div className="select-container">
+        <div className="list-container">
             <ul>
                 {itemsList.map((item, index) => (
                     <li key={`${item}-${index}`}>{item}</li>
