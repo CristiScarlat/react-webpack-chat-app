@@ -1,4 +1,4 @@
-This is a chat app build with ReactJS, you can test it by open multiple instances of the app in multiple tabs or browsers instances.
+This is a chat app build with ReactJS, you can test it by opening multiple instances of the app in multiple tabs or browsers instances.
 When the app is started the landing page will ask you to register your self with a name.
 Names of all online users are displayed in the left side of the chat window.
 To be able to chat with the online users the registration with just your name is mandatory
