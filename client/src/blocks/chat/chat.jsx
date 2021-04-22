@@ -12,7 +12,7 @@ const Chat = ({ handleSendMessage, onlineUsers, msgList }) => {
             <List itemsList={onlineUsers}/>
             <ChatboxContainer>
                 <MessagesContainer msgList={msgList}/>
-                <InputWithButton handleButtonOnCLick={handleSendMessage} />
+                <InputWithButton handleButtonOnClick={handleSendMessage} useValidation={true} validationRgx={/^[a-zA-Z0-9\s.,=-]*$/g}/>
             </ChatboxContainer>
         </div>
     )

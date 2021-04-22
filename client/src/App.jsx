@@ -25,11 +25,9 @@ function App() {
 
   const fetchOnLineUsers = async () => {
     const users = await fetch(`${api}/users`)
-    console.log(users.users)
   }
 
   const handleUpdateOnlineUsers = (usersList) => {
-    console.log("online users", usersList)
     setOnlineUsers(JSON.parse(usersList))
   }
 
@@ -38,7 +36,6 @@ function App() {
   }
 
   const handleSendMessage = (str) => {
-    console.log("client send message")
     const timestamp = new Date().toLocaleString()
     const msgsArr = [...chatMsgs, {user: 'self', message: str, timestamp}]
     setChatMsgs(msgsArr)
@@ -48,8 +45,8 @@ function App() {
   }
 
   const handleRegisterName = (str) => {
-    setUserName(str)
     socketSend("user", JSON.stringify({ name: str }))
+    setUserName(str)
   }
 
   return (

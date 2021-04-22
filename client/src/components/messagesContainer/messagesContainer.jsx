@@ -3,7 +3,6 @@ import './messagesContainer.css'
 
 
 const MessagesContainer = ({ msgList }) => {
-    console.log(msgList)
     return (
         <>
             <section className="chat-window">

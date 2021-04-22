@@ -1,50 +1,49 @@
 import { isValid } from 'ipaddr.js'
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import './inputWithButton.css'
 
-const InputWithButton = ({handleButtonOnCLick, buttonLabel="send"}) => {
+const InputWithButton = ({ handleButtonOnClick, buttonLabel = "send", useValidation=true, validationRgx=''}) => {
 
     const [inputStr, setInputStr] = useState()
     const [errorMsg, setErrorMsg] = useState()
 
-    useEffect(() => {
-        window.addEventListener('keypress', handleKeyPress)
-    })
-
     const handleKeyPress = (e) => {
-        console.log(e.key)
-        if(e.key === 'Enter')handleOnCLick()
+        if (e.key === 'Enter'){
+            handleOnClick()
+        }
     }
 
     const isValid = (data) => {
-        const regx = /^[a-zA-Z0-9\s.,=-]*$/g
-        return regx.test(data)
+        const rgx = validationRgx
+        return /^[a-zA-Z0-9\s.,=-]*$/g.test(data)
     }
 
     const handleOnChange = (e) => {
         const inputStr = e.target.value
-        console.log(">>>>", inputStr)
-        if(isValid(inputStr)){
-            errorMsg && setErrorMsg(null)  
-        }
-        else{
+        if (useValidation && !isValid(inputStr)) {
             setErrorMsg('Only aA-zZ1234567890-=., is alowed.')
         }
+        errorMsg && setErrorMsg(null)
         setInputStr(e.target.value)
     }
 
-    const handleOnCLick = () => {
-        if(errorMsg)return
+    const handleOnClick = () => {
+        if (errorMsg) return
+        handleButtonOnClick(inputStr)
         setInputStr("")
-        handleButtonOnCLick(inputStr)
     }
+
 
     return (
         <>
             <div className="chat-input">
                 <div className="input-error">{errorMsg}</div>
-                <input type="text" autoComplete="on" placeholder="Type a message" onChange={handleOnChange} value={inputStr || ""}/>
-                <button onClick={handleOnCLick}>
+                <input type="text" 
+                placeholder="Type a message" 
+                onChange={handleOnChange} 
+                value={inputStr || ""} 
+                onKeyDown={handleKeyPress}/>
+                <button onClick={handleOnClick}>
                     {buttonLabel}
                 </button>
             </div>

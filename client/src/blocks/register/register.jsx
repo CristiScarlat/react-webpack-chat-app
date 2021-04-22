@@ -8,7 +8,7 @@ const RegisterWithName = ({handleRegisterName}) => {
 
             <div className="form-container">
                 <p>Tell me your name</p>
-                <InputWithButton buttonLabel="register" handleButtonOnCLick={handleRegisterName}/>
+                <InputWithButton buttonLabel="register" handleButtonOnClick={handleRegisterName} useValidation={false}/>
             </div>
         </div>
     )
