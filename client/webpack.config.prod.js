@@ -4,6 +4,9 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const Dotenv = require('dotenv-webpack')
 
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+
 module.exports = {
   mode: 'production',
   entry: './src/index.js',
@@ -24,6 +27,13 @@ module.exports = {
       }
     ]
   },
+  resolve: {
+    alias: {
+      'components': path.resolve(process.cwd(), './src/components'),
+      'blocks': path.resolve(process.cwd(), './src/blocks'),
+      'services': path.resolve(process.cwd(), './src/services')
+    }
+  },
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
@@ -37,5 +47,21 @@ module.exports = {
       inject: true,
       template: path.resolve(__dirname, 'public', 'index.html'),
     }),
-  ]
+  ],
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new OptimizeCssAssetsPlugin({
+        cssProcessorOptions: {
+          map: {
+            inline: false,
+            annotation: true,
+          },
+        },
+      }),
+      new TerserPlugin({
+        test: /\.(js|jsx)$/,
+      }),
+    ],
+  },
 }
